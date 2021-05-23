@@ -18,7 +18,7 @@ import datetime
 import time
 import os
 
-OUTPUT_DIR = "/media/share/garden_cam"
+OUTPUT_DIR = "/media/share/some_dir"
 PERIOD_S = 300
 TIME_MIN = datetime.time(6, 00, 0)
 TIME_MAX = datetime.time(20, 15, 0)
