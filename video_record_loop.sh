@@ -24,7 +24,7 @@ function stop()
 
 function timestamp()
 {
-    date +"%Y-%m-%d__%H:%M:%S"
+    date +"%Y-%m-%d__%H-%M-%S"
 }
 
 function start_recording()
