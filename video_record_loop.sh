@@ -2,6 +2,8 @@
 #
 # Continuously records video files of the configured duration
 # until stopped by an external signal, eg. ctrl-c
+#
+# To run in the background, run nohup ./video_record_loop.sh &
 
 set -eu
 
@@ -9,9 +11,9 @@ set -eu
 RECORD_DIR=/home/pi/mousecam
 DONE_DIR=$RECORD_DIR/done
 # cam/recording settings
-ROTATE_DEGREES=90
+ROTATE_DEGREES=0
 FPS=10
-DURATION_SEC=600
+DURATION_SEC=1800
 
 trap stop SIGINT
 
@@ -34,7 +36,8 @@ function start_recording()
       -fps $FPS \
       --exposure night \
       --flicker 50hz \
-      -t $(($DURATION_SEC * 1000))
+      -t $(($DURATION_SEC * 1000)) \
+      -w 800 -h 600
 }
 
 while [ $stop_requested -ne 1 ]
