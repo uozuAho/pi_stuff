@@ -3,7 +3,10 @@
 # Continuously records video files of the configured duration
 # until stopped by an external signal, eg. ctrl-c
 #
-# To run in the background, run nohup ./video_record_loop.sh &
+# To run in the background, run nohup ./video_record_loop.sh
+#
+# Note that recorded videos are raw h264. You can use gpac/mp4box
+# to convert them to videos playable by most media players.
 
 set -eu
 
@@ -12,6 +15,8 @@ RECORD_DIR=/home/pi/mousecam
 DONE_DIR=$RECORD_DIR/done
 # cam/recording settings
 ROTATE_DEGREES=0
+WIDTH=800
+HEIGHT=600
 FPS=10
 DURATION_SEC=1800
 
@@ -37,7 +42,8 @@ function start_recording()
       --exposure night \
       --flicker 50hz \
       -t $(($DURATION_SEC * 1000)) \
-      -w 800 -h 600
+      -w $WIDTH \
+      -h $HEIGHT
 }
 
 while [ $stop_requested -ne 1 ]
