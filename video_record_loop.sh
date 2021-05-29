@@ -3,7 +3,9 @@
 # Continuously records video files of the configured duration
 # until stopped by an external signal, eg. ctrl-c
 #
-# To run in the background, run nohup ./video_record_loop.sh
+# To run in the background, run nohup bash ./video_record_loop.sh
+# note that you can't ctrl-c from here, as it terminates... why?
+# just disconnect.
 #
 # Note that recorded videos are raw h264. You can use gpac/mp4box
 # to convert them to videos playable by most media players.
@@ -20,7 +22,8 @@ HEIGHT=600
 FPS=10
 DURATION_SEC=1800
 
-trap stop SIGINT
+# doesn't work with nohup???
+#trap stop SIGINT
 
 stop_requested=0
 
