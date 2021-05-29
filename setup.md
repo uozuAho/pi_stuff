@@ -1,6 +1,6 @@
 # Raspberry pi setup
 
-## SD card and first boot
+# SD card and first boot
 
 ```sh
 # >> = user action
@@ -35,7 +35,15 @@ EOF
       boot
 - you should now be able to ssh into the pi
 
-## OLD: WiFi & ssh setup via serial cable
+# extra bits
+```sh
+# enable camera
+raspi-config  # -> enable camera
+# set timezone
+raspi-config  # -> localisation options
+```
+
+# OLD: WiFi & ssh setup via serial cable
 
 - connect serial interface to pi, open terminal (minicom looks nicer):
     - `sudo minicom -s  # -s = first time setup, required once`
