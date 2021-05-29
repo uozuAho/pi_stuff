@@ -5,7 +5,7 @@
 # You can watch the stream in VLC by opening tcp/h264://pi.address:3333
 
 PORT=3333
-ROTATE_DEGREES=0
+ROTATE_DEGREES=90
 # Note about fps: anything but default (25?) will cause VLC playback to
 # stutter. Configure VLC playback framerate via tools -> preferences ->
 # video -> input/codecs -> demuxers -> h264
