@@ -7,7 +7,7 @@
 set -e
 
 VIDEOS_DIR=/s/zz_woz_stuff/mousecam
-OUTPUT_DIR=/s/zz_woz_stuff/mousecam
+OUTPUT_DIR=/s/zz_woz_stuff/mousecam/scanned
 # Lower = more sensitive. Default = 0.15
 MOTION_THRESHOLD=0.05
 # delete the source video after scanning
@@ -18,6 +18,8 @@ if [ `find $VIDEOS_DIR -iname "*.h264" | wc -l` -eq '0' ]; then
     echo no videos!
     exit
 fi
+
+mkdir -p $OUTPUT_DIR
 
 for raw_vid in $VIDEOS_DIR/*.h264; do
     out_path=$OUTPUT_DIR/`basename $raw_vid`.mp4
