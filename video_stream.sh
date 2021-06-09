@@ -7,7 +7,7 @@
 PORT=3333
 LOCAL_IP=`ip -4 addr show wlan0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'`
 # video settings
-ROTATE_DEGREES=90
+ROTATE_DEGREES=0
 WIDTH=800
 HEIGHT=600
 # Note about fps: anything but default (25?) will cause VLC playback to
