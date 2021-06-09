@@ -15,22 +15,15 @@ set -eu
 # output dir
 RECORD_DIR=/home/pi/mousecam
 DONE_DIR=$RECORD_DIR/done
+# record between times
+RECORD_TIME_WINDOW_START="00:00"
+RECORD_TIME_WINDOW_END="08:00"
 # cam/recording settings
 ROTATE_DEGREES=0
 WIDTH=800
 HEIGHT=600
 FPS=10
 DURATION_SEC=1800
-
-# doesn't work with nohup???
-#trap stop SIGINT
-
-stop_requested=0
-
-function stop()
-{
-    stop_requested=1
-}
 
 function timestamp()
 {
@@ -49,13 +42,19 @@ function start_recording()
       -h $HEIGHT
 }
 
-while [ $stop_requested -ne 1 ]
+while true
 do
-    echo "`timestamp`: starting recording"
-    start_recording
-    mv $RECORD_DIR/*.h264 $DONE_DIR
-    echo "`timestamp`: recording exited with status $?"
-    sleep 1
+    now=`date +%H:%M`
+    if [[ "$now" > $RECORD_TIME_WINDOW_START ]] &&  [[ "$now" < $RECORD_TIME_WINDOW_END ]]; then
+        echo "`timestamp`: starting recording"
+        start_recording
+        mv $RECORD_DIR/*.h264 $DONE_DIR
+        echo "`timestamp`: recording exited with status $?"
+        sleep 1
+    else
+        echo "`timestamp`: outside record window, sleeping"
+        sleep 300
+    fi
 done
 
 echo "`timestamp`: reached end of script :)"
