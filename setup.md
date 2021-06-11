@@ -2,11 +2,14 @@
 
 # SD card and first boot
 
+On a linux/unix desktop machine:
+
 ```sh
 # >> = user action
 # ?? = info
-# >> download raspbian lite image: https://www.raspberrypi.org/downloads/raspbian/
-# >> unmount partitions if auto-mounted, for example:
+# >> download raspberry pi os lite image: https://www.raspberrypi.org/downloads/raspbian/
+# >> insert an SD card
+# >> unmount any SD card partitions if they auto-mounted, for example:
 sudo umount /media/user/boot
 # >> write image to sd card:
 sudo dd bs=1M if="~/Downloads/2017-04-10-raspbian-jessie-lite.img" of=/dev/mmcblk0
@@ -28,12 +31,13 @@ network={
     key_mgmt=WPA-PSK
 }
 EOF
+# >> unmount the sd card partitions, remove, and insert into the pi
+# ?? note that the sd card partitions will be resized to fill the SD card on first boot
+# >> get the pi's IP address from your router
+# >> ssh into the pi
+ssh pi@192.168.1.XXX
+password: (raspberry by default)
 ```
-
-- unmount sd card, remove & insert into pi
-    - note: the linux partition will be resized to fill the SD card on first
-      boot
-- you should now be able to ssh into the pi
 
 # extra bits
 ```sh
