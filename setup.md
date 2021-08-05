@@ -45,6 +45,16 @@ password: (raspberry by default)
 raspi-config  # -> enable camera
 # set timezone
 raspi-config  # -> localisation options
+# git stuff
+sudo apt-get install git
+ssh-keygen -t ed25519 -C "your_email@example.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub
+# copy output, goto github -> user icon -> settings -> SSH .. -> add key
+# get my pi repos
+git clone git@github.com:uozuAho/pcconfig.git
+git clone git@github.com:uozuAho/pi_stuff.git
 ```
 
 # OLD: WiFi & ssh setup via serial cable
