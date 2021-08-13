@@ -42,6 +42,9 @@ function start_recording()
       -h $HEIGHT
 }
 
+mkdir -p $RECORD_DIR
+mkdir -p $DONE_DIR
+
 while true
 do
     now=`date +%H:%M`
