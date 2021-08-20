@@ -29,6 +29,8 @@ OUTPUT_DIR=/s/zz_woz_stuff/mousecam/scanned
 MOTION_THRESHOLD=0.05
 # delete the source video after scanning
 DELETE_AFTER_SCAN=yes
+# delete scanned outputs smaller than this threshold
+DELETE_SCANNED_THRESH=500k
 
 # prevent processing 0 files (bad things happen)
 if [ `find $VIDEOS_DIR -iname "*.h264" | wc -l` -eq '0' ]; then
@@ -45,3 +47,7 @@ for raw_vid in $VIDEOS_DIR/*.h264; do
         rm $raw_vid
     fi
 done
+
+if [[ $DELETE_SCANNED_THRESH != "" ]]; then
+    find $OUTPUT_DIR -type f -size -$DELETE_SCANNED_THRESH -not -path './old/*' -delete
+fi
