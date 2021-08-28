@@ -30,7 +30,7 @@ MOTION_THRESHOLD=0.05
 # delete the source video after scanning
 DELETE_AFTER_SCAN=yes
 # delete scanned outputs smaller than this threshold
-DELETE_SCANNED_THRESH=500k
+DELETE_SCANNED_THRESH=600k
 
 # prevent processing 0 files (bad things happen)
 if [ `find $VIDEOS_DIR -iname "*.h264" | wc -l` -eq '0' ]; then
@@ -46,8 +46,7 @@ for raw_vid in $VIDEOS_DIR/*.h264; do
     if [[ $DELETE_AFTER_SCAN == "yes" ]]; then
         rm $raw_vid
     fi
+    if [[ $DELETE_SCANNED_THRESH != "" ]]; then
+        find $out_path -size -$DELETE_SCANNED_THRESH -delete
+    fi
 done
-
-if [[ $DELETE_SCANNED_THRESH != "" ]]; then
-    find $OUTPUT_DIR -type f -size -$DELETE_SCANNED_THRESH -not -path './old/*' -delete
-fi
