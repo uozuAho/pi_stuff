@@ -2,6 +2,9 @@
 
 # SD card and first boot
 
+Use [Raspberry Pi Imager](https://www.raspberrypi.com/software/), or follow the steps below.
+Last time I tried the steps below, I couldn't get my password to work.
+
 On a linux/unix desktop machine:
 
 ```sh
