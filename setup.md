@@ -51,7 +51,9 @@ ssh <your pi username>@192.168.1.XXX
 # extra bits
 ```sh
 # enable camera
-raspi-config  # -> enable camera
+raspi-config                              # -> enable camera
+rpicam-still -o img.jpg                   # take a picture. Note it'll do a couple of seconds of video first (why?)
+scp <user>@<addr>:/home/<user>/img.jpg .  # copy the image to your machine
 # set timezone
 raspi-config  # -> localisation options
 # git stuff
