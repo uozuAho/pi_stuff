@@ -13,10 +13,10 @@
 set -eu
 
 # output dir
-RECORD_DIR=/home/pi/mousecam
+RECORD_DIR=/home/woz/cam
 DONE_DIR=$RECORD_DIR/done
 # record between times
-RECORD_TIME_WINDOW_START="00:00"
+RECORD_TIME_WINDOW_START="23:00"
 RECORD_TIME_WINDOW_END="08:00"
 # cam/recording settings
 ROTATE_DEGREES=0
@@ -32,14 +32,12 @@ function timestamp()
 
 function start_recording()
 {
-    raspivid -o $RECORD_DIR/`timestamp`.h264 \
-      -rot $ROTATE_DEGREES \
-      -fps $FPS \
-      --exposure night \
+    rpicam-vid -o $RECORD_DIR/$(timestamp).h264 \
+      --framerate $FPS \
       --flicker 50hz \
       -t $(($DURATION_SEC * 1000)) \
-      -w $WIDTH \
-      -h $HEIGHT
+      --width $WIDTH \
+      --height $HEIGHT
 }
 
 mkdir -p $RECORD_DIR

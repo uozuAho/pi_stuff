@@ -17,11 +17,11 @@ HEIGHT=600
 
 echo View stream at tcp/h264://${LOCAL_IP:-whats.my.ip.address?}:$PORT
 
-raspivid -l -o tcp://0.0.0.0:$PORT -t 0 \
-    -rot $ROTATE_DEGREES \
-    --exposure night \
+rpicam-vid -l -o tcp://0.0.0.0:$PORT -t 0 \
     --flicker 50hz \
-    -w $WIDTH \
-    -h $HEIGHT
+    --width $WIDTH \
+    --height $HEIGHT
 
+# --exposure night \
+# -rot $ROTATE_DEGREES \
 # -fps $FPS
