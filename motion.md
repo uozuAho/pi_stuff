@@ -3,13 +3,9 @@
 # install
 ```sh
 sudo apt-get install motion
-sudo raspi-config  # -> enable camera
-# reboot
-# configure motion:
 cp /etc/motion/motion.conf .
-# does motion start without error?
-sudo motion -c motion.conf
-# press ctrl-c to exit
+# run before configuring, to check if camera is working:
+libcamerify motion -c motion.conf
 ```
 
 # configure
@@ -18,16 +14,13 @@ depend on the version of motion. Check "Configuration Options-Listed
 Alphabetically" in the [motion config docs](https://motion-project.github.io/motion_config.html).
 
 ```
-target_dir /media/share/somedir
+target_dir = /home/$USER/mopics
 stream_localhost off
 max_movie_time 1800
 ffmpeg_output_movies on
 ```
 
 The stream can be accessed via a browser: http://pi.ip.address:8081
-
-# to do
-- recording video to share not working. no errors in logs, no video files saved
 
 # references
 - [motion docs](https://motion-project.github.io/motion_config.html)
