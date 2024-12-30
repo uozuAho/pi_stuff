@@ -1,7 +1,6 @@
 # Connect a raspberry pi to a network drive
 
 ```sh
-sudo apt install samba samba-common-bin smbclient cifs-utils
 sudo mkdir /media/share
 sudo chown pi /media/share
 sudo chgrp pi /media/share

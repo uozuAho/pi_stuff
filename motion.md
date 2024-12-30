@@ -5,7 +5,7 @@ Assumes a freshly installed OS. Verified on a pi zero W v1.
 # install & check camera
 ```sh
 sudo apt update
-sudo apt install motion libcamera-v4l2 libcamera-tools
+sudo apt install -y motion libcamera-v4l2 libcamera-tools
 cp /etc/motion/motion.conf .
 nano motion.conf
 # comment out log_file
