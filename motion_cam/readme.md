@@ -17,9 +17,3 @@ a networked motion detecting camera. For more details, see ../motion.md
     - `sudo raspi-config`
     - perf options
     - enable filesystem overlay (takes ~10 minutes)
-
-
-todo:
-- copy setup sh from pi to here
-- test
-
