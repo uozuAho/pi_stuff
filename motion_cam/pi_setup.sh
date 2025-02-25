@@ -23,7 +23,7 @@ function setup_network_share() {
       >> /etc/fstab"
     echo ""
     echo "Attempting to mount. Check ls /media/share ..."
-    # sudo mount -a
+    sudo mount -a
     systemctl daemon-reload
 }
 
@@ -34,7 +34,7 @@ function check_camera() {
     read -p "After pressing a key, browse to http://piw.local:8080 to see the camera feed"
     libcamerify motion -c motion.littlethings.conf
 
-    echo "When done, run killall motion"
+    read -p "When done, press a key, then run killall motion"
 }
 
 function setup_cron() {
