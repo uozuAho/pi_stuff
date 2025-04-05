@@ -13,7 +13,7 @@ a networked motion detecting camera. For more details, see ../motion.md
     - plug in SD, turn on pi, wait a few minutes
     - `ssh woz@piw.local`
 - run `pi_setup.sh` on the pi
-- set filesystem to readonly with raspi-config:
+- (maybe) set filesystem to readonly with raspi-config:
     - `sudo raspi-config`
     - perf options
     - enable filesystem overlay (takes ~10 minutes)
